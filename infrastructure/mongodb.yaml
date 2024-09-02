@@ -28,3 +28,17 @@ spec:
   volumes:
   - name: mongo-storage
     emptyDir: {}
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-service
+  namespace: kubernetes-practices
+spec:
+  selector:
+    app: mongodb
+  ports:
+  - protocol: TCP
+    port: 27017
+    targetPort: 27017
+  type: ClusterIP
